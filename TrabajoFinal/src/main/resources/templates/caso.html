@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="ISO-8859-1"></meta>
 	
-		<title>Abogado</title>
+		<title>Caso</title>
 	
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<link	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
@@ -36,38 +36,58 @@
 		
 		<div class="container">
 												
-			<form th:action="@{/abogado/registrar}" method="post" th:object="${abogado}" enctype="multipart/form-data">
+			<form th:action="@{/caso/registrar}" method="post" th:object="${caso}" enctype="multipart/form-data">
 			
 				<div class="form-group">
 					
-					<label for="idespecialidad">ID:</label> 
-					<input type="text" class="form-control" th:field="*{idAbogado}"></input>
+					<label for="idcaso">ID:</label> 
+					<input type="text" class="form-control" th:field="*{idCaso}"></input>
 
 					<div class="form-group">
 						
 						<label 	for="nombre">NOMBRE:</label> 
-						<input type="text" th:field="*{nameAbogado}" class="form-control" id="nombre"></input>
+						<input type="text" th:field="*{nameCaso}" class="form-control" id="nombre"></input>
 												
-						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nameAbogado')}" 
-								th:errors="*{nameAbogado}">
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nameCaso')}" 
+								th:errors="*{nameCaso}">
 						</div>
-
 						
-						<label for="especialidad" class=" col-sm-2 col-form-label">Especialidad: </label>
-						<select class="form-control" th:field="*{especialidad.idEspecialidad}">
-							<option th:each="r: ${listaEspecialidades}" th:value="${r.idEspecialidad}"
-									th:text="${r.nameEspecialidad}"
-									th:selected="(${r.idEspecialidad} == *{especialidad.idEspecialidad})">
+						<label 	for="nombre">CASO:</label> 
+						<input type="text" th:field="*{nameCaso}" class="form-control" id="nombre"></input>
+												
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nameCaso')}" 
+								th:errors="*{nameCaso}">
+						</div>
+						
+						<label 	for="nombre">JUZGADO:</label> 
+						<input type="text" th:field="*{nameJuzgado}" class="form-control" id="nombre"></input>
+												
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nameJuzgado')}" 
+								th:errors="*{nameJuzgado}">
+						</div>
+						
+						<label for="resolucion" class=" col-sm-2 col-form-label">Resolucion: </label>
+						<select class="form-control" th:field="*{resolucion.idResolucion}">
+							<option th:each="r: ${listaResoluciones}" th:value="${r.idResolucion}"
+									th:text="${r.nameResolucion}"
+									th:selected="(${r.idResolucion} == *{resolucion.idResolucion})">
 							</option>
 						</select>
-				
+					
+						<label for="cliente" class=" col-sm-2 col-form-label">Cliente: </label>
+						<select class="form-control" th:field="*{cliente.idCliente}">
+							<option th:each="d: ${listaClientes}" th:value="${d.idCliente}"
+									th:text="${d.nameCliente}"
+									th:selected="(${d.idCliente} == *{dueno.idCliente})">
+							</option>
+						</select>
 						
 					</div>
 
 				</div>
 
 				<button type="submit" class="btn btn-primary">Aceptar</button>
-				<a href="/abogado/listar" class="btn btn-danger">Cancelar</a>
+				<a href="/pet/listar" class="btn btn-danger">Cancelar</a>
 
 			</form>
 		</div>
