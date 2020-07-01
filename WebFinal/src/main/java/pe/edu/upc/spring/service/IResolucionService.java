@@ -14,7 +14,7 @@ public interface IResolucionService {
 	public Optional<Resolucion> buscarId(int idResol);
 	public Optional<Resolucion> listarId(int idResol);
 	public List<Resolucion> listar();
-	public List<Resolucion> buscarFecha(Date Fecha);
+	public List<Resolucion> buscarDescripcion(String descripcion);
 	public List<Resolucion> buscarNumeroCaso(int numeroJuzgado);
 	
 	

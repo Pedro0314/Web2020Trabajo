@@ -12,8 +12,8 @@ import pe.edu.upc.spring.model.Resolucion;
 
 @Repository
 public interface IResolucionRepository extends JpaRepository<Resolucion, Integer>{
-	@Query("from Resolucion r where r.Fecha like %:Fecha%")
-	List<Resolucion> buscarFecha(@Param("Fecha") int Fecha);
+	@Query("from Resolucion r where r.descripcion like %:descripcion%")
+	List<Resolucion> buscarDescripcion(@Param("descripcion") String descripcion);
 	
 	@Query("from Resolucion r where r.caso.numeroJuzgado like %:numeroJuzgado%")
 	List<Resolucion> buscarCaso(@Param("numeroJuzgado") int numeroJuzgado);
