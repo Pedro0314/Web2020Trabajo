@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pe.edu.upc.spring.model.Especialidad;
-import pe.edu.upc.spring.service.IEspecialidadService;
+import pe.edu.upc.spring.model.Caso;
+import pe.edu.upc.spring.service.ICasoService;
 
 @Controller
-@RequestMapping("/especialidad")
-public class EspecialidadController {
+@RequestMapping("/caso")
+public class CasoController {
 
 	@Autowired
-	private IEspecialidadService rService;
+	private ICasoService cService;
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -32,32 +32,32 @@ public class EspecialidadController {
 	}
 	
 	@RequestMapping("/")
-	public String irPaginaListadoEspecialidades(Map<String, Object> model) {
-		model.put("listaEspecialidades", rService.listar());
-		return "listEspecialidad";
+	public String irPaginaListadoRazas(Map<String, Object> model) {
+		model.put("listaCasos", cService.listar());
+		return "listCaso";
 	}
 	
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
-		model.addAttribute("especialidad", new Especialidad());
-		return "especialidad";
+		model.addAttribute("caso", new Caso());
+		return "caso";
 	}
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute @Valid Especialidad objEspecialidad, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute @Valid Caso objCaso, BindingResult binRes, Model model)
 	throws ParseException
 	{
 		if (binRes.hasErrors())
-			return "especialidad";
+			return "caso";
 		else 
 		{
-			boolean flag = rService.insertar(objEspecialidad);
+			boolean flag = cService.insertar(objCaso);
 			if (flag) {
-				return "redirect:/especialidad/listar";
+				return "redirect:/caso/listar";
 			}
 			else {
 				model.addAttribute("mensaje", "Ocurrio un roche");
-				return "redirect:/especialidad/irRegistrar";
+				return "redirect:/caso/irRegistrar";
 			}
 		}
 	}
@@ -67,45 +67,62 @@ public class EspecialidadController {
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
 	throws ParseException
 	{
-		Optional<Especialidad> objEspecialidad = rService.listarId(id);
-		if (objEspecialidad == null ) {
+		Optional<Caso> objCaso = cService.listarId(id);
+		if (objCaso == null ) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche");
-			return "redirect:/Especialidad/listar";
+			return "redirect:/caso/listar";
 		}
 		else {
-			model.addAttribute("especialidad", objEspecialidad);
-			return "especialidad";
+			model.addAttribute("caso", objCaso);
+			return "Caso";
 		}
 	}
 	
+	/*
+	@RequestMapping("/actualizar")
+	public String actualizar(@ModelAttribute @Valid Race objRace, BindingResult binRes, Model model,
+			RedirectAttributes objRedir)
+	throws ParseException
+	{
+		if (binRes.hasErrors()) {
+			return "redirect:/race/listar";
+		}
+		else {
+			boolean flag = rService.modificar(objRace);
+			if (flag) {
+				objRedir.addFlashAttribute("mensaje","Se actualizo correctamente");
+				return "redirect:/race/listar";
+			}
+			else {
+				model.addAttribute("mensaje", "Ocurrio un roche");
+				return "redirect:/race/irRegistrar";
+			}
+		}
+	}
+	*/
 	
 	
 	@RequestMapping("/eliminar")
 	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
 		try {
 			if (id!=null && id>0) {
-				rService.eliminar(id);
-				model.put("listaEspecialidades", rService.listar());
+				cService.eliminar(id);
+				model.put("listaCasos", cService.listar());
 			}
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un roche");
-			model.put("listaEspecialidades", rService.listar());
+			model.put("listaCasos", cService.listar());
 		}
-		return "listEspecialidad";
+		return "listCaso";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
-		model.put("listaEspecialidades", rService.listar());
-		return "listEspecialidad";
+		model.put("listaCasos", cService.listar());
+		return "listCaso";
 	}
 	
-	@RequestMapping("/irBuscar")
-	public String buscar(Model model) {
-		model.addAttribute("especialidad",new Especialidad());
-		return "buscarEspecialidad";
-	}
 	
 }

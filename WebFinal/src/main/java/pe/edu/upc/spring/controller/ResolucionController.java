@@ -118,7 +118,7 @@ public class ResolucionController {
 	@RequestMapping("/listarId")
 	public String listarId(Map<String, Object>model, @ModelAttribute Resolucion resolucion)
 	throws ParseException{
-		rService.listarId(resolucion.getIdResol());
+		rService.listarId(resolucion.getidResolucion());
 		return "listResolucion";
 	}
 	

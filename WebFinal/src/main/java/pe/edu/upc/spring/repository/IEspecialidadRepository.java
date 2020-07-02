@@ -13,4 +13,8 @@ import pe.edu.upc.spring.model.Especialidad;
 public interface IEspecialidadRepository extends JpaRepository<Especialidad, Integer> {
 	@Query("from Especialidad r where r.nameEspecialidad like %:nameEspecialidad%")
 	List<Especialidad> buscarNombre(@Param("nameEspecialidad") String nameEspecialidad);
+	
+	@Query("from Especialidad r where r.nameEspecialidad like %:nameEspecialidad%")
+	List<Especialidad> buscarporNombre(@Param("nameEspecialidad") String nameEspecialidad);
+	
 }

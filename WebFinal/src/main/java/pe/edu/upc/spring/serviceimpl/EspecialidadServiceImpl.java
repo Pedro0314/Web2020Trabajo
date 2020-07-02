@@ -64,5 +64,11 @@ public class EspecialidadServiceImpl implements IEspecialidadService {
 	public List<Especialidad> buscarNombre(String nameEspecialidad) {		
 		return dEspecialidad.buscarNombre(nameEspecialidad);
 	}
+	
+	@Override
+	@Transactional(readOnly=true)	
+	public List<Especialidad> buscarporNombre(String nameEspecialidad) {		
+		return dEspecialidad.buscarporNombre(nameEspecialidad);
+	}
 
 }

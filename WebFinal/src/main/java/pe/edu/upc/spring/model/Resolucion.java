@@ -26,7 +26,7 @@ public class Resolucion implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idResol;
+	private int idResolucion;
 	
 	@NotNull
 	@Column(name="fecha")
@@ -51,21 +51,21 @@ public class Resolucion implements Serializable {
 		super();
 	}
 
-	public Resolucion(int idResol, Date Fecha, String descripcion, String plazos, Caso caso) {
+	public Resolucion(int idResolucion, Date Fecha, String descripcion, String plazos, Caso caso) {
 		super();
-		this.idResol = idResol;
+		this.idResolucion = idResolucion;
 		this.Fecha = Fecha;
 		this.descripcion = descripcion;
 		this.plazos = plazos;
 		this.caso = caso;
 	}
 
-	public int getIdResol() {
-		return idResol;
+	public int getidResolucion() {
+		return idResolucion;
 	}
 
-	public void setIdResol(int idResol) {
-		this.idResol = idResol;
+	public void setidResolucion(int idResolucion) {
+		this.idResolucion = idResolucion;
 	}
 
 	public Date getFecha() {

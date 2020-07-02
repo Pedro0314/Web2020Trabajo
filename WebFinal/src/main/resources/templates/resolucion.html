@@ -35,10 +35,10 @@
 					<div class="form-group">
 					
 						<label 	for="nombre">RESOLUCION:</label> 
-						<input type="text" th:field="*{nameResolucion}" class="form-control" id="nombre"></input>
+						<input type="text" th:field="*{descripcion}" class="form-control" id="nombre"></input>
 	
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('nameRace')}" 
-							th:errors="*{nameResolucion}">
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('descripcion')}" 
+							th:errors="*{descripcion}">
 						</div>
 						
 					</div>
