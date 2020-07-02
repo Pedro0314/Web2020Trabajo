@@ -28,7 +28,6 @@ public class Abogado implements Serializable {
 	
 	@NotEmpty(message = "No puede estar vacio")
 	@NotBlank(message = "No puede estar en blanco")
-	
 	@Column(name="nombreAbogado", nullable=false, length=50)
 	private String nameAbogado;
 	

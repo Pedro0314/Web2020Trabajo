@@ -11,9 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
-
-
+import javax.validation.constraints.Size;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -31,7 +29,12 @@ public class Cliente implements Serializable {
 	@Column(name="domicilioLegal", nullable=false, length=50)
 	private String domicilioLegal;
 	
-	private int telefono;
+	
+	@Size(min = 9, max = 9)
+	@NotEmpty(message = "Ingrese telefono")
+	@Column(name = "telefono", nullable = false, length = 9)
+	private String telefono;
+	
 	
 	@NotEmpty(message = "No puede estar vacio")
 	@NotBlank(message = "No puede estar en blanco")
@@ -50,7 +53,7 @@ public class Cliente implements Serializable {
 		super();
 	}
 
-	public Cliente(int idCliente, String domicilioLegal, int telefono, String correo, Persona_Juridica persona, Persona_Natural personaN) {
+	public Cliente(int idCliente, String domicilioLegal, String telefono, String correo, Persona_Juridica persona, Persona_Natural personaN) {
 		super();
 		this.idCliente = idCliente;
 		this.domicilioLegal = domicilioLegal;
@@ -76,11 +79,11 @@ public class Cliente implements Serializable {
 		this.domicilioLegal = domicilioLegal;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 

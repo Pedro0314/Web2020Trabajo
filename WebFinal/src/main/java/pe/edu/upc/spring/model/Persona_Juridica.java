@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="Persona")
@@ -24,16 +25,23 @@ public class Persona_Juridica implements Serializable {
 	@Column(name="nombrePersona", length=100, nullable=false)
 	private String namePersona;
 
-	private int razon;
+	@NotEmpty(message="No puede estar vacio")
+	@NotBlank(message="No puede estar en blanco")
+	@Column(name="razon", length=300, nullable=false)
+	private String razon;
 	
-	private int ruc;
+	@Size(min = 11, max = 11, message="El ruc del repartidor debe tener 11 digitos")
+	@NotEmpty(message="No puede estar vacio")
+	@NotBlank(message="No puede estar en blanco")
+	@Column(name="ruc", length=11, nullable=false)
+	private String ruc;
 	
 	private int numeroRepresen;
 	public Persona_Juridica() {
 		super();
 	}
 
-	public Persona_Juridica(int idPersona, String namePersona, int razon, int ruc, int numeroRepresen) {
+	public Persona_Juridica(int idPersona, String namePersona, String razon, String ruc, int numeroRepresen) {
 		super();
 		this.idPersona = idPersona;
 		this.namePersona = namePersona;
@@ -58,19 +66,19 @@ public class Persona_Juridica implements Serializable {
 		this.namePersona = namePersona;
 	}
 
-	public int getRazon() {
+	public String getRazon() {
 		return razon;
 	}
 
-	public void setRazon(int razon) {
+	public void setRazon(String razon) {
 		this.razon = razon;
 	}
 
-	public int getRuc() {
+	public String getRuc() {
 		return ruc;
 	}
 
-	public void setRuc(int ruc) {
+	public void setRuc(String ruc) {
 		this.ruc = ruc;
 	}
 

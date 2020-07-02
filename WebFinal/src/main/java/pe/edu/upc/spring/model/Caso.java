@@ -11,9 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
-
-
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -26,6 +25,8 @@ public class Caso implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCaso;
 	
+	@Min(0)
+	@Column(name="numeroJuzgado", nullable=false)
 	private int numeroJuzgado;
 	
 	@NotEmpty(message = "No puede estar vacio")
@@ -33,8 +34,12 @@ public class Caso implements Serializable {
 	@Column(name="descripcionJuzgado", nullable=false, length=50)
 	private String descripcionJuzgado;
 	
+	@Min(0)
+	@Column(name="sala", nullable=false)
 	private int sala;
 	
+	@Min(0)
+	@Column(name="juez", nullable=false)
 	private int juez;
 	
 	@NotEmpty(message = "No puede estar vacio")

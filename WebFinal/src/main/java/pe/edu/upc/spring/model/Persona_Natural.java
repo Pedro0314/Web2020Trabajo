@@ -21,12 +21,12 @@ public class Persona_Natural implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nombrePersonaN", length=100, nullable=false)
+	@Column(name="nombrePersonaN", length=50, nullable=false)
 	private String namePersonaN;
 
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="apellidoPersonaN", length=100, nullable=false)
+	@Column(name="apellidoPersonaN", length=50, nullable=false)
 	private String apellidoPersonaN;
 	public Persona_Natural() {
 		super();

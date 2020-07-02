@@ -11,11 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -28,7 +31,9 @@ public class Resolucion implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idResolucion;
 	
-	@NotNull
+	@NotNull(message = "La fecha es obligatoria")
+	@Future(message = "La fecha debe estar en el futuro")
+	@Temporal(TemporalType.DATE)
 	@Column(name="fecha")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date Fecha;

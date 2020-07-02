@@ -11,9 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,10 +34,13 @@ public class Detalle implements Serializable {
 	@Column(name="nombreDetalle", length=300, nullable=false)
 	private String nameDetalle;
 	
+	@Min(0)
+	@Max(9)
+	@Column(name="puntDetalle", nullable=false)
 	private int puntDetalle;
 	
-	
-	@NotNull
+	@NotNull(message = "La fecha es obligatoria")
+	@Future(message = "La fecha debe estar en el futuro")
 	@Temporal(TemporalType.DATE)
 	@Column(name="fechaDetalle")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
