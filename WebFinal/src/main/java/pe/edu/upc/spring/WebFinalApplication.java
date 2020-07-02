@@ -24,18 +24,14 @@ public class WebFinalApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		String password = "SECRETO";
 		String contra = "DIOSITO";
 		
-		for(int i=0; i<2; i++) {
-			String bcryptPassword = passwordEncoder.encode(password);
+		for(int i=0; i<1; i++) {
+			String bcryptPassword = passwordEncoder.encode(contra);
 			System.out.println(bcryptPassword);
 		}
 
-		for(int i=0; i<2; i++) {
-			String bcryptPassword2 = passwordEncoder.encode(contra);
-			System.out.println(bcryptPassword2);
-		}
+	
 		
 	}
 	
