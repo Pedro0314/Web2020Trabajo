@@ -38,7 +38,7 @@ public class Cliente implements Serializable {
 	
 	@NotEmpty(message = "No puede estar vacio")
 	@NotBlank(message = "No puede estar en blanco")
-	@Column(name="correo", nullable=false, length=50)
+	@Column(name="correo", nullable=false, length=100)
 	private String correo;
 	
 	@ManyToOne

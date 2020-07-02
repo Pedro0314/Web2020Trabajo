@@ -28,7 +28,7 @@ public class RegistroCaso implements Serializable {
 	
 	@NotEmpty(message = "No puede estar vacio")
 	@NotBlank(message = "No puede estar en blanco")
-	@Column(name="descripcion", nullable=false, length=50)
+	@Column(name="descripcion", nullable=false, length=200)
 	private String descripcion;
 	
 	@ManyToOne

@@ -31,7 +31,7 @@ public class Detalle implements Serializable {
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nombreDetalle", length=300, nullable=false)
+	@Column(name="nombreDetalle", length=50, nullable=false)
 	private String nameDetalle;
 	
 	@Min(0)

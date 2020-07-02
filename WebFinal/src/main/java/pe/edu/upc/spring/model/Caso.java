@@ -31,7 +31,7 @@ public class Caso implements Serializable {
 	
 	@NotEmpty(message = "No puede estar vacio")
 	@NotBlank(message = "No puede estar en blanco")
-	@Column(name="descripcionJuzgado", nullable=false, length=50)
+	@Column(name="descripcionJuzgado", nullable=false, length=200)
 	private String descripcionJuzgado;
 	
 	@Min(0)
