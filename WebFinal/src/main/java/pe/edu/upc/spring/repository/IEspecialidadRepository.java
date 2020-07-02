@@ -14,7 +14,4 @@ public interface IEspecialidadRepository extends JpaRepository<Especialidad, Int
 	@Query("from Especialidad r where r.nameEspecialidad like %:nameEspecialidad%")
 	List<Especialidad> buscarNombre(@Param("nameEspecialidad") String nameEspecialidad);
 	
-	@Query("from Especialidad r where r.nameEspecialidad like %:nameEspecialidad%")
-	List<Especialidad> buscarporNombre(@Param("nameEspecialidad") String nameEspecialidad);
-	
 }

@@ -1,6 +1,7 @@
 package pe.edu.upc.spring.controller;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pe.edu.upc.spring.model.Cliente;
 import pe.edu.upc.spring.model.Especialidad;
 import pe.edu.upc.spring.service.IEspecialidadService;
 
@@ -105,7 +107,24 @@ public class EspecialidadController {
 	@RequestMapping("/irBuscar")
 	public String buscar(Model model) {
 		model.addAttribute("especialidad",new Especialidad());
+		model.addAttribute("listEspecialidades", rService.listar());
 		return "buscarEspecialidad";
 	}
+	
+	
+	@RequestMapping("/buscar")
+	public String buscar(Map<String, Object>model, @ModelAttribute Especialidad especialidad)
+	throws ParseException{
+		List<Especialidad>listaEspecialidades;
+		especialidad.setNameEspecialidad(especialidad.getNameEspecialidad());
+		listaEspecialidades=rService.buscarNombre(especialidad.getNameEspecialidad());
+		
+		if(listaEspecialidades.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listaEspecialidades", listaEspecialidades);
+		return "buscarEspecialidad";
+	}
+	
 	
 }

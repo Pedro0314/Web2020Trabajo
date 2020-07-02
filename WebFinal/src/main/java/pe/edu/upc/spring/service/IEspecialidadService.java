@@ -12,5 +12,4 @@ public interface IEspecialidadService {
 	public Optional<Especialidad> listarId(int idEspecialidad);
 	List<Especialidad> listar();
 	List<Especialidad> buscarNombre(String nameEspecialidad);	
-	List<Especialidad> buscarporNombre(String nameEspecialidad);
 }
