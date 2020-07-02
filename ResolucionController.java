@@ -37,7 +37,7 @@ public class ResolucionController {
 	
 		
 	@RequestMapping("/")
-	public String irPaginaListadoAbogados(Map<String, Object> model) {
+	public String irPaginaListadoResoluciones(Map<String, Object> model) {
 		model.put("listaResolucion", rService.listar());
 		return "listResolucion";
 	}
